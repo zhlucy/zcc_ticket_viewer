@@ -1,6 +1,7 @@
 import argparse
 import requests
 import base64
+from viewer import Viewer
 
 def main():
     parser = argparse.ArgumentParser()
@@ -8,12 +9,13 @@ def main():
     parser.add_argument("email", help="email address of account")
     parser.add_argument("key", help="key for authentication")
 
+    #oauth does not need email
     parser.add_argument("-o", "--oauth", action="store_true", help="flag for oauth token authentication")
     parser.add_argument("-a", "--api", action="store_true", help="flag for api token authentication")
     args = parser.parse_args()
 
     url = "https://{}.zendesk.com/api/v2/tickets.json".format(args.subdomain)
-    if (args.oauth):
+    if (args.oauth): #unable to test
         print("oauth")
         print(args.key)
         response = requests.get(url, headers={'Authorization': 'Bearer {}'.format(args.key)})
@@ -24,7 +26,8 @@ def main():
         response = requests.get(url, auth=(args.email, args.key))
 
     if response.status_code == 200:
-        print("Success")
+        viewer = Viewer(response.json()["tickets"]);
+        viewer.menu()
     elif response.status_code == 401:
         print("Authentication failed.")
     elif response.status_code >= 500:
