@@ -28,9 +28,9 @@ class Viewer:
         1: List all tickets
         2: List one ticket
         """
+        options = {'1' : 'List all tickets', '2' : 'List one ticket', 'q' : 'Quit'}
         while True:
-            clear()
-            print("1 for listall, 2 for listone, q for quit")
+            self.print_menu('Ticket Viewer Menu', options)
             data = input("\nOption: ")
             if data == 'q':
                 print("Exit")
@@ -47,14 +47,17 @@ class Viewer:
         q: Exit
         z: Return to main menu
         """
+        options = {'x' : 'Show options', 'z' : 'Return to main menu', 'q' : 'Quit'}
+        self.print_menu("List One Ticket", options)
         while True:
-            print("\nEnter ticket id, or q for quit, z for main menu")
-            data = input("Ticket ID: ")
+            data = input("\nTicket ID: ")
             if data == 'q':
                 print("Exit")
                 quit()
             elif data == 'z':
                 break
+            elif data == 'x':
+                self.print_menu("List One Ticket", options)
             ticket = self.getTicket(data)
             if ticket:
                 self.print_detail_ticket(ticket)
@@ -76,14 +79,15 @@ class Viewer:
 
     def listall(self):
         """
-        Print first page of ticket and displays menu for listing all tickets.
+        Displays menu for listing all tickets.
         q: Exit
         z: Return to main menu
         1: Previous page
         2. Next page
         """
-        page = 0
-        self.print_ticket_page(page)
+        options = {'1' : 'Previous page', '2' : 'Next page', 'x' : 'Show options', 'z' : 'Return to main menu', 'q' : 'Quit'}
+        page = -1
+        self.print_menu("List All Tickes", options)
         while True:
             data = input("\nOption: ")
             if data == 'q':
@@ -91,6 +95,8 @@ class Viewer:
                 quit()
             elif data == 'z':
                 break
+            elif data == 'x':
+                self.print_menu("List All Tickes", options)
             elif data == '1':
                 if self.print_ticket_page(page - 1):
                     page -= 1
@@ -104,6 +110,7 @@ class Viewer:
         The maximum number of tickets listed in one page is 25.
         Returns True if page_num is in range, else returns False.
         """
+        clear()
         if not 0 <= page_num < self.pages:
             print("Reached the end")
             return False
@@ -111,14 +118,12 @@ class Viewer:
             self.print_header()
             for i in range(page_num * 25, min(page_num * 25 + 25, self.amount)):
                 self.print_ticket(i)
-            print("1 for previous page, 2 for next page")
             return True
 
     def print_header(self):    
         """
         Prints the header of the page view for listing all tickets.
         """
-        clear()
         id = format_field("ID", 10) #what's max digit of id
         subject = format_field("Subject", 30)
         status = format_field("Status", 10)
@@ -157,6 +162,15 @@ class Viewer:
         print("Assignee: {assignee}    Priority: {priority} Updated At: {updated_at}".format(assignee=assignee, priority=priority, updated_at=updated_at))
         print("\n{}".format(ticket["description"]))
         print("\nTags: {}".format(ticket["tags"]))
+
+    def print_menu(self, title, options):
+        clear()
+        print('-'*100)
+        print(title)
+        print('-'*100)
+
+        for key in options.keys():
+            print("     {key}: {description}".format(key=key, description=options[key]))
 
 def div_round(num, den):
     """
