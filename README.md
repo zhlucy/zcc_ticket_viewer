@@ -56,7 +56,7 @@ List All Tickets
 	 z: Return to main menu
 	 q: Quit
 ```
-Each page shows a maximum of 25 tickets.\
+Each page shows a maximum of 25 tickets. Remember to expand/resize your terminal so the 25 tickets fit in the terminal; or scroll up to see the first few tickets.\
 `1`: Goes to the previous page\
 `2`: Goes to the next page\
 `x`: Shows the options (ie. this screen) again\
