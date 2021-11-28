@@ -10,6 +10,7 @@ Follow the commands below to install the program.
 ```
 
 ## Configurating
+To generate and enable API token access, see https://support.zendesk.com/hc/en-us/articles/4408889192858-Generating-a-new-API-token.\
 Before running the program, update src/config.ini to include your sudomain, email, and api token.
 See example below.
 ```
