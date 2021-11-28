@@ -49,10 +49,10 @@ class Viewer:
         q: Quit
         z: Return to main menu
         """
-        options = {'x' : 'Show options', 'z' : 'Return to main menu', 'q' : 'Quit'}
+        options = {'z' : 'Return to main menu', 'q' : 'Quit'}
         self.print_menu("List One Ticket", options)
         while not self.end:
-            data = input("\nTicket ID: ")
+            data = input("\nInput x to see command options\nTicket ID: ")
             if data == 'q':
                 self.end = True
                 break
@@ -88,11 +88,11 @@ class Viewer:
         1: Previous page
         2. Next page
         """
-        options = {'1' : 'Previous page', '2' : 'Next page', 'x' : 'Show options', 'z' : 'Return to main menu', 'q' : 'Quit'}
+        options = {'1' : 'Previous page', '2' : 'Next page', 'z' : 'Return to main menu', 'q' : 'Quit'}
         page, was_end = -1, True
         self.print_menu("List All Tickets", options)
         while not self.end:
-            data = input("\nOption: ")
+            data = input("\nInput x to see command options\nOption: ")
             if data == 'q':
                 self.end = True
                 break

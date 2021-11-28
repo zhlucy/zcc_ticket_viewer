@@ -52,19 +52,18 @@ List All Tickets
 ----------------------------------------------------------------------------------------------------
 	 1: Previous page
 	 2: Next page
-	 x: Show options
 	 z: Return to main menu
 	 q: Quit
 ```
 Each page shows a maximum of 25 tickets. Remember to expand/resize your terminal so the 25 tickets fit in the terminal; or scroll up to see the first few tickets.\
 `1`: Goes to the previous page\
 `2`: Goes to the next page\
-`x`: Shows the options (ie. this screen) again\
 `z`: Returns to the main menu\
 `q`: Ends and exits the program
 
 To start viewing the first page, input `2`.
-When there are no previous or next page, the screen will display `Reached the end`.
+When there are no previous or next page, the screen will display `Reached the end`.\
+To see the command options again, input `x`.
 
 ### List One Ticket
 
@@ -73,16 +72,15 @@ If `2` is inputted, then the following is displayed.
 ----------------------------------------------------------------------------------------------------
 List One Ticket
 ----------------------------------------------------------------------------------------------------
-	 x: Show options
 	 z: Return to main menu
 	 q: Quit
 ```
-`x`: Shows the options (ie. this screen) again\
 `z`: Returns to the main menu\
 `q`: Ends and exits the program
 
 To view a ticket, input its ticket id.
-If the ticket does not exist, the screen will display `Ticket not found`.
+If the ticket does not exist, the screen will display `Ticket not found`.\
+To see the command options again, input `x`.
 
 ## Authors
 

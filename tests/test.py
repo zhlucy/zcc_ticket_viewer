@@ -55,13 +55,11 @@ class TestViewer(unittest.TestCase):
         "----------------------------------------------------------------------------------------------------\n"\
         "     1: Previous page\n"\
         "     2: Next page\n"\
-        "     x: Show options\n"\
         "     z: Return to main menu\n"\
         "     q: Quit\n"
     list_one_menu = "----------------------------------------------------------------------------------------------------\n"\
         "List One Ticket\n"\
         "----------------------------------------------------------------------------------------------------\n"\
-        "     x: Show options\n"\
         "     z: Return to main menu\n"\
         "     q: Quit\n"
 
@@ -184,7 +182,6 @@ class TestViewer(unittest.TestCase):
         self.check_stdout("Please enter an integer.\n", viewer.get_ticket, 'some')
 
     def test_listall_paging(self):
-        self.maxDiff = None
         tickets = [{'id' : 1, 'subject' : 'subject 1', 'status' : 'open', 'priority' : 'low', 'updated_at' : 'some_time'}, 
                              {'id' : 2, 'subject' : 'subject 2', 'status' : 'open', 'priority' : 'high', 'updated_at' : 'some_time'},
                              {'id' : 3, 'subject' : 'subject 3', 'status' : 'open', 'priority' : 'high', 'updated_at' : 'some_time'}]
@@ -254,7 +251,6 @@ class TestViewer(unittest.TestCase):
 
     @mock.patch('builtins.input', side_effect=['x', 'q'])
     def test_listall_x(self, mocked_input):
-        self.maxDiff = None
         viewer = Viewer([{'id' : 1}, {'id' : 2}])
         correct_out = self.list_all_menu * 2
         self.check_stdout(correct_out, viewer.listall)
