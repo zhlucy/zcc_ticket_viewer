@@ -89,7 +89,7 @@ class Viewer:
         2. Next page
         """
         options = {'1' : 'Previous page', '2' : 'Next page', 'x' : 'Show options', 'z' : 'Return to main menu', 'q' : 'Quit'}
-        page = -1
+        page, was_end = -1, True
         self.print_menu("List All Tickets", options)
         while not self.end:
             data = input("\nOption: ")
@@ -103,9 +103,17 @@ class Viewer:
             elif data == '1':
                 if self.print_ticket_page(page - 1):
                     page -= 1
+                    was_end = False
+                elif not was_end:
+                    page -= 1
+                    was_end = True
             elif data == '2':
                 if self.print_ticket_page(page + 1):
                     page += 1
+                    was_end = False
+                elif not was_end:
+                    page += 1
+                    was_end = True
 
     def print_ticket_page(self, page_num):
         """
