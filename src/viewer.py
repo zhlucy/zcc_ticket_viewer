@@ -9,6 +9,7 @@ class Viewer:
         pages (int): Total number of pages of tickets.
         tickets (list): List of tickets.
     """
+    MAX_PER_PAGE = 25
 
     def __init__(self, tickets):
         """
@@ -18,23 +19,24 @@ class Viewer:
             tickets (list): List of tickets.
         """
         self.amount = len(tickets)
-        self.pages = div_round(self.amount, 25)
+        self.pages = div_round(self.amount, Viewer.MAX_PER_PAGE)
         self.tickets = tickets
+        self.end = False
 
     def menu(self):
         """
         Displays main menu.
-        q: Exit
+        q: Quit
         1: List all tickets
         2: List one ticket
         """
         options = {'1' : 'List all tickets', '2' : 'List one ticket', 'q' : 'Quit'}
-        while True:
+        while not self.end:
             self.print_menu('Ticket Viewer Menu', options)
             data = input("\nOption: ")
             if data == 'q':
-                print("Exit")
-                quit()
+                self.end = True
+                break
             elif data == '1':
                 self.listall()
             elif data == '2':
@@ -44,25 +46,26 @@ class Viewer:
         """
         Displays menu for listing one ticket.
         Expects ticket id for user input.
-        q: Exit
+        q: Quit
         z: Return to main menu
         """
         options = {'x' : 'Show options', 'z' : 'Return to main menu', 'q' : 'Quit'}
         self.print_menu("List One Ticket", options)
-        while True:
+        while not self.end:
             data = input("\nTicket ID: ")
             if data == 'q':
-                print("Exit")
-                quit()
+                self.end = True
+                break
             elif data == 'z':
                 break
             elif data == 'x':
                 self.print_menu("List One Ticket", options)
-            ticket = self.getTicket(data)
-            if ticket:
-                self.print_detail_ticket(ticket)
+            else: 
+                ticket = self.get_ticket(data)
+                if ticket:
+                    self.print_detail_ticket(ticket)
 
-    def getTicket(self, id):
+    def get_ticket(self, id):
         """
         Returns the ticket specified by the id.
         """
@@ -74,29 +77,29 @@ class Viewer:
             print('Ticket not found.')
             return None
         except ValueError:
-            print('Please enter an integer')
+            print('Please enter an integer.')
 
 
     def listall(self):
         """
         Displays menu for listing all tickets.
-        q: Exit
+        q: Quit
         z: Return to main menu
         1: Previous page
         2. Next page
         """
         options = {'1' : 'Previous page', '2' : 'Next page', 'x' : 'Show options', 'z' : 'Return to main menu', 'q' : 'Quit'}
         page = -1
-        self.print_menu("List All Tickes", options)
-        while True:
+        self.print_menu("List All Tickets", options)
+        while not self.end:
             data = input("\nOption: ")
             if data == 'q':
-                print("Exit")
-                quit()
+                self.end = True
+                break
             elif data == 'z':
                 break
             elif data == 'x':
-                self.print_menu("List All Tickes", options)
+                self.print_menu("List All Tickets", options)
             elif data == '1':
                 if self.print_ticket_page(page - 1):
                     page -= 1
@@ -107,7 +110,6 @@ class Viewer:
     def print_ticket_page(self, page_num):
         """
         Prints a page of tickets specified by page_num. 
-        The maximum number of tickets listed in one page is 25.
         Returns True if page_num is in range, else returns False.
         """
         clear()
@@ -116,7 +118,7 @@ class Viewer:
             return False
         else:
             self.print_header()
-            for i in range(page_num * 25, min(page_num * 25 + 25, self.amount)):
+            for i in range(page_num * Viewer.MAX_PER_PAGE, min(page_num * Viewer.MAX_PER_PAGE + Viewer.MAX_PER_PAGE, self.amount)):
                 self.print_ticket(i)
             return True
 
@@ -124,11 +126,11 @@ class Viewer:
         """
         Prints the header of the page view for listing all tickets.
         """
-        id = format_field("ID", 10) #what's max digit of id
+        id = format_field("ID", 10) 
         subject = format_field("Subject", 30)
         status = format_field("Status", 10)
         priority = format_field("Priority", 10)
-        updated_at = format_field("Updated At", 20)
+        updated_at = "Updated At"
         print("{id} {subject}     {status} {priority} {updated_at}".format(id=id, subject=subject, status=status, priority=priority, updated_at=updated_at))
         print('-'*100)
         
@@ -141,7 +143,7 @@ class Viewer:
         subject = format_field(ticket["subject"], 30)
         status = format_field(ticket["status"], 10)
         priority = format_field(ticket["priority"], 10)
-        updated_at = format_field(ticket["updated_at"], 20)
+        updated_at = ticket["updated_at"]
         print("{id} {subject}     {status} {priority} {updated_at}".format(id=id, subject=subject, status=status, priority=priority, updated_at=updated_at))
     
     def print_detail_ticket(self, ticket):
@@ -156,8 +158,8 @@ class Viewer:
         assignee = format_field(ticket["assignee_id"], 10)
         status = format_field(ticket["status"], 10)
         priority = format_field(ticket["priority"], 10)
-        created_at = format_field(ticket["created_at"], 20)
-        updated_at = format_field(ticket["updated_at"], 20)
+        created_at = ticket["created_at"]
+        updated_at = ticket["updated_at"]
         print("Requester: {requester}   Status: {status}   Created At: {created_at}".format(requester=requester, status=status, created_at=created_at))
         print("Assignee: {assignee}    Priority: {priority} Updated At: {updated_at}".format(assignee=assignee, priority=priority, updated_at=updated_at))
         print("\n{}".format(ticket["description"]))
