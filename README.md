@@ -30,22 +30,22 @@ python3 src/ticket_viewer.py
 ## Usage Instruction
 When the program starts, it displays the main menu.
 ```
-----------------------------------------------------------------------------------------------------\n"\
-Ticket Viewer Menu\n"\
-----------------------------------------------------------------------------------------------------\n"\
-     1: List all tickets\n"\
-     2: List one ticket\n"\
-     q: Quit\n"
+----------------------------------------------------------------------------------------------------
+Ticket Viewer Menu
+----------------------------------------------------------------------------------------------------
+     1: List all tickets
+     2: List one ticket
+     q: Quit
 ```
-1: Lists all tickets with their id, subject, status, priority, and time of update.
-2: Displays one ticket with additional details, requester id, assignee id, description, and time of creating the ticket.
-q: Ends and exits the program.
+`1`: Lists all tickets with their id, subject, status, priority, and time of update.
+`2`: Displays one ticket with additional details, requester id, assignee id, description, and time of creating the ticket.
+`q`: Ends and exits the program.
 
 	If `1` is inputted, then the following is displayed.
 	```
-	----------------------------------------------------------------------------------------------------\n"\
+	----------------------------------------------------------------------------------------------------
 	List All Tickets
-	----------------------------------------------------------------------------------------------------\n"\
+	----------------------------------------------------------------------------------------------------
 		 1: Previous page
 		 2: Next page
 		 x: Show options
@@ -66,16 +66,16 @@ q: Ends and exits the program.
 	
 	If `2` is inputted, then the following is displayed.
 	```
-	----------------------------------------------------------------------------------------------------\n"\
+	----------------------------------------------------------------------------------------------------
 	List One Ticket
-	----------------------------------------------------------------------------------------------------\n"\
+	----------------------------------------------------------------------------------------------------
 		 x: Show options
 		 z: Return to main menu
 		 q: Quit
 	```
-	x: Shows the options (ie. this screen) again
-	z: Returns to the main menu
-	q: Ends and exits the program
+	`x`: Shows the options (ie. this screen) again
+	`z`: Returns to the main menu
+	`q`: Ends and exits the program
 
 	To view a ticket, input its ticket id.
 	If the ticket does not exist, the screen will display `Ticket not found`.
