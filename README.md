@@ -16,9 +16,9 @@ See example below.
 > vim src/config.ini
 ---------config file---------
 [USER]
-subdomain=<insert subdomain>
-email=<insert email>
-api_token=<insert api token>
+subdomain=your_subdomain
+email=your_email
+api_token=your_token
 ```
 
 ## Executing program
