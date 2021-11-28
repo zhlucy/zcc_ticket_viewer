@@ -41,44 +41,45 @@ Ticket Viewer Menu
 `2`: Displays one ticket with additional details, requester id, assignee id, description, and time of creating the ticket.
 `q`: Ends and exits the program.
 
-	If `1` is inputted, then the following is displayed.
-	```
-	----------------------------------------------------------------------------------------------------
-	List All Tickets
-	----------------------------------------------------------------------------------------------------
-		 1: Previous page
-		 2: Next page
-		 x: Show options
-		 z: Return to main menu
-		 q: Quit
-	```
-	Each page shows a maximum of 25 tickets.
-	1: Goes to the previous page
-	2: Goes to the next page
-	x: Shows the options (ie. this screen) again
-	z: Returns to the main menu
-	q: Ends and exits the program
+### List All Tickets
+If `1` is inputted, then the following is displayed.
+```
+----------------------------------------------------------------------------------------------------
+List All Tickets
+----------------------------------------------------------------------------------------------------
+	 1: Previous page
+	 2: Next page
+	 x: Show options
+	 z: Return to main menu
+	 q: Quit
+```
+Each page shows a maximum of 25 tickets.
+1: Goes to the previous page
+2: Goes to the next page
+x: Shows the options (ie. this screen) again
+z: Returns to the main menu
+q: Ends and exits the program
 
-	To start viewing the first page, input `2`.
-	When there are no previous or next page, the screen will display `Reached the end`.
-	
-	---------------------------------------------------------------------------------------------------------
-	
-	If `2` is inputted, then the following is displayed.
-	```
-	----------------------------------------------------------------------------------------------------
-	List One Ticket
-	----------------------------------------------------------------------------------------------------
-		 x: Show options
-		 z: Return to main menu
-		 q: Quit
-	```
-	`x`: Shows the options (ie. this screen) again
-	`z`: Returns to the main menu
-	`q`: Ends and exits the program
+To start viewing the first page, input `2`.
+When there are no previous or next page, the screen will display `Reached the end`.
 
-	To view a ticket, input its ticket id.
-	If the ticket does not exist, the screen will display `Ticket not found`.
+### List One Ticket
+
+If `2` is inputted, then the following is displayed.
+```
+----------------------------------------------------------------------------------------------------
+List One Ticket
+----------------------------------------------------------------------------------------------------
+	 x: Show options
+	 z: Return to main menu
+	 q: Quit
+```
+`x`: Shows the options (ie. this screen) again
+`z`: Returns to the main menu
+`q`: Ends and exits the program
+
+To view a ticket, input its ticket id.
+If the ticket does not exist, the screen will display `Ticket not found`.
 
 ## Authors
 
