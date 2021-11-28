@@ -6,6 +6,7 @@ The CLI program pulls tickets from Zendesk and displays them locally.
 Follow the commands below to install the program.
 ```
 > git clone https://github.com/zhlucy/zcc_ticket_viewer
+> cd zcc_ticket_viewer
 > pip install -r requirements.txt
 ```
 
